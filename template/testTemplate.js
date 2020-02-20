@@ -1,9 +1,9 @@
 const func = require("./app");
 const assert = require("../utils/assert");
 
-const dataTable = [{ expect: "", input: { value: "" } }];
+const dataTable = [{ title: "", expect: "", input: { value: "" } }];
 
 dataTable.forEach((cases, i) => {
-  const { expect, input } = cases;
-  assert.deepEqual(expect, func(input.value), `${i}: "${input.value}"`);
+  const { expect, input, title } = cases;
+  assert.deepEqual(expect, func(input.value), `${title}:`);
 });
