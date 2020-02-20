@@ -27,7 +27,30 @@ const convertNodesToArray = node => {
   return result;
 };
 
+const createLinkCycleByPos = pos => head => {
+  if (!head || pos < 0) {
+    return head;
+  }
+  if (!head.next && pos === 0) {
+    head.next = head;
+    return head;
+  }
+  let count = 0;
+  let targetNode = null;
+  let tail = head;
+  while (tail.next) {
+    if (count === pos) {
+      targetNode = tail;
+    }
+    tail = tail.next;
+    count += 1;
+  }
+  tail.next = targetNode;
+  return head;
+};
+
 module.exports = {
   convertToNode,
-  convertNodesToArray
+  convertNodesToArray,
+  createLinkCycleByPos
 };
