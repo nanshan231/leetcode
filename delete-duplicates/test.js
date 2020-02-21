@@ -1,6 +1,6 @@
 const deleteDuplicates = require("./app");
 const assert = require("../utils/assert");
-const { convertNodesToArray, convertToNode } = require("../utils/utils");
+const { convertNodesToArray, convertToNode } = require("../utils/linkedList");
 
 const dataTable = [
   {

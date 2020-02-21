@@ -1,6 +1,6 @@
 const func = require("./app");
 const assert = require("../utils/assert");
-const { convertToNode, convertNodesToArray } = require("../utils/utils");
+const { convertToNode, convertNodesToArray } = require("../utils/linkedList");
 
 const dataTable = [
   {
