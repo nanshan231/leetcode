@@ -27,6 +27,13 @@ const convertNodesToArray = node => {
   return result;
 };
 
+const convertSingleNodeToArray = node => {
+  if (!node || node.val === undefined) {
+    return [];
+  }
+  return [].concat(node.val);
+};
+
 const createLinkCycleByPos = pos => head => {
   if (!head || pos < 0) {
     return head;
@@ -49,8 +56,36 @@ const createLinkCycleByPos = pos => head => {
   return head;
 };
 
+const createIntersectionLink = (skipA, skipB) => (headA, headB) => {
+  if (skipA < 0 || skipB < 0) {
+    return {
+      headA,
+      headB
+    };
+  }
+  let tailA = headA;
+  let tailB = headB;
+  let i = 0;
+  while (i < skipA) {
+    tailA = tailA.next;
+    i++;
+  }
+  i = 0;
+  while (i < skipB - 1) {
+    tailB = tailB.next;
+    i++;
+  }
+  tailB.next = tailA;
+  return {
+    headA,
+    headB
+  };
+};
+
 module.exports = {
   convertToNode,
   convertNodesToArray,
-  createLinkCycleByPos
+  createLinkCycleByPos,
+  convertSingleNodeToArray,
+  createIntersectionLink
 };
